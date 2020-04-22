@@ -11,7 +11,8 @@ let startBtn = document.getElementById("start"),
     yearSavingsValue = document.getElementsByClassName('yearsavings-value')[0],
 
 
-    dateTime = document.getElementsByClassName('date-time'),
+    dateTime = document.querySelector('.date-time'),
+    budgetTime = document.querySelector('.budget-time'),
     expensesItem = document.getElementsByClassName('expenses-item'),
     dateTimeBtn = document.getElementsByTagName('button')[0],
     expensesBtn = document.getElementsByTagName('button')[1],
@@ -31,45 +32,56 @@ let money,
     time;
 
 
-// dateTimeBtn.addEventListener('click', function () {
+dateTimeBtn.addEventListener('click', function () {
+    time = dateTime.value;
+
+    if (time == "" || time == null) {
+        alert("Ошибочка... Введите данные правильно!");
+    }
+
+    appData.timeData = time;
+    yearValue.value = new Date(Date.parse(time)).getFullYear();
+    monthValue.value = new Date(Date.parse(time)).getMonth() + 1;
+    dayValue.value = new Date(Date.parse(time)).getDate();
+});
+
+dateTimeBtn.addEventListener('click', function () {
+    money = +budgetTime.value;
+
+    if (isNaN(money) || money == "" || money == null) {
+        alert("Ошибочка... Введите данные правильно!");
+    }
+
+    moneyPerDay = money;
+    appData.budget = money;
+    budgetValue.textContent = money.toFixed();
+});
+
+// Отключаем кнопку рассчитать
+// countBtn.disabled = true;
+// countBtn.style.background = '#ff964b5c';
 
 
+// startBtn.addEventListener('click', function () {
+//     time = prompt("Введите дату в формате YYYY-MM-DD", "");
+//     money = +prompt("Ваш бюджет на месяц?", "");
 
-//     appData.timeData = time;
+//     while (isNaN(money) || money == "" || money == null) {
+//         money = +prompt("Ваш бюджет на месяц?", "");
+//     }
+
+//     moneyPerDay = money;
 //     appData.budget = money;
+//     appData.timeData = time;
 //     budgetValue.textContent = money.toFixed();
 //     yearValue.value = new Date(Date.parse(time)).getFullYear();
 //     monthValue.value = new Date(Date.parse(time)).getMonth() + 1;
 //     dayValue.value = new Date(Date.parse(time)).getDate();
 
+//     // Включаем кнопку после прописания дату и бюджет
+//     countBtn.disabled = false;
+//     countBtn.style.background = '';
 // });
-
-// Отключаем кнопку рассчитать
-countBtn.disabled = true;
-countBtn.style.background = '#ff964b5c';
-
-
-startBtn.addEventListener('click', function () {
-    time = prompt("Введите дату в формате YYYY-MM-DD", "");
-    money = +prompt("Ваш бюджет на месяц?", "");
-
-    while (isNaN(money) || money == "" || money == null) {
-        money = +prompt("Ваш бюджет на месяц?", "");
-    }
-
-
-    moneyPerDay = money;
-    appData.budget = money;
-    appData.timeData = time;
-    budgetValue.textContent = money.toFixed();
-    yearValue.value = new Date(Date.parse(time)).getFullYear();
-    monthValue.value = new Date(Date.parse(time)).getMonth() + 1;
-    dayValue.value = new Date(Date.parse(time)).getDate();
-
-    // Включаем кнопку после прописания дату и бюджет
-    countBtn.disabled = false;
-    countBtn.style.background = '';
-});
 
 expensesBtn.addEventListener('click', function () {
     let sum = 0;

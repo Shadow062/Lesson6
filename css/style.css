@@ -76,7 +76,8 @@ a:active {
 .data .choose-sum,
 .data .expenses-item,
 .data .optionalexpenses-item,
-.data .date-time {
+.data .date-time,
+.data .budget-time {
     height: 35px;
     width: calc((100%/2) - 4px);
     border-radius: 2.5px;
@@ -94,7 +95,8 @@ a:active {
 .data .choose-sum::-webkit-input-placeholder,
 .data .expenses-item::-webkit-input-placeholder,
 .data .optionalexpenses-item::-webkit-input-placeholder,
-.data .date-time::-webkit-input-placeholder {
+.data .date-time::-webkit-input-placeholder,
+.data .budget-time::-webkit-input-placeholder {
     opacity: .3
 }
 
@@ -111,7 +113,8 @@ a:active {
 .data .choose-sum::-ms-input-placeholder,
 .data .expenses-item::-ms-input-placeholder,
 .data .optionalexpenses-item::-ms-input-placeholder,
-.data .date-time::-webkit-input-placeholder {
+.data .date-time::-webkit-input-placeholder,
+.data .budget-time::-webkit-input-placeholder {
     opacity: .3
 }
 
